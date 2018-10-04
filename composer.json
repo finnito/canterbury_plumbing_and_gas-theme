@@ -1,0 +1,9 @@
+{
+    "name": "blackhole/canterburyplumbinggas-theme",
+    "type": "streams-addon",
+    "autoload": {
+        "psr-4": {
+            "Blackhole\\CanterburyplumbinggasTheme\\": "src/"
+        }
+    }
+}

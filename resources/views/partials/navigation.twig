@@ -1,0 +1,75 @@
+<nav>
+    <div class="dark-bar">
+        <span>
+            <a
+                href="tel:{{ variable_value('contact_information', 'phone') }}"
+                title="Contact Canterbury Plumbing + Gas by phone">
+                <svg class="icon icon-phone">
+                    <use xlink:href="#icon-phone"></use>
+                </svg>
+            </a>
+        </span>
+        <span>
+            <a
+                href="tel:{{ variable_value('contact_information', 'phone') }}"
+                title="Contact Canterbury Plumbing + Gas by phone">
+                {{ variable_value('contact_information', 'phone') }}
+            </a>
+        </span>
+    </div>
+    <div class="nav-flex menu">
+        <a
+            href="/"
+            class="logo"
+            title="Home">
+            <img
+                class="lazy"
+                data-src="{{ variable_value('design', 'logo').url }}"
+                alt="{{ variable_value('design', 'logo').title }}"
+                data-height="{{ variable_value('design', 'logo').height }}"
+                data-width="{{ variable_value('design', 'logo').width }}"/>
+            <noscript>
+                <img
+                    src="{{ variable_value('design', 'logo').url }}"
+                    alt="{{ variable_value('design', 'logo').title }}"/>
+            </noscript>
+        </a>
+
+        <input type="checkbox" class="toggle mobile"/>
+        <div class="hamburger mobile">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        {{ menu("Header")
+                .listClass("flex desktop")
+                .activeClass("current")
+                .render()|raw }}
+
+        <div class="nav-wrapper mobile">
+            <div class="dark-bar mobile">
+                <span>
+                    <a
+                        href="tel:{{ variable_value('contact_information', 'phone') }}"
+                        title="Contact Canterbury Plumbing + Gas by phone">
+                        <svg class="icon icon-phone">
+                            <use xlink:href="#icon-phone"></use>
+                        </svg>
+                    </a>
+                </span>
+                <span>
+                    <a
+                        href="tel:{{ variable_value('contact_information', 'phone') }}"
+                        title="Contact Canterbury Plumbing + Gas by phone">
+                        {{ variable_value('contact_information', 'phone') }}
+                    </a>
+                </span>
+            </div>
+            {{ menu("Header")
+                .listClass("")
+                .activeClass("current")
+                .render()|raw }}
+        </div>
+    </div>
+</nav>

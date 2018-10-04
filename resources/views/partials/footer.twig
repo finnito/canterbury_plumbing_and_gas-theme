@@ -1,0 +1,118 @@
+<section class="partners">
+	<h3>Our Partners</h3>
+	<div class="partners-flex">
+		{% for p in entries("canterburyplumbinggas", "partners")
+			.get()
+			%}
+			<img
+				class="partner-logo lazy"
+				alt="{{ p.partner_logo.title}}"
+				data-src="{{ p.partner_logo.url}}"
+				data-width="{{p.partner_logo.width}}"
+				data-height="{{p.partner_logo.height}}"/>
+			<noscript>
+				<img
+					class="partner-logo"
+					alt="{{ p.partner_logo.title}}"
+					src="{{ p.partner_logo.url}}"/>
+			</noscript>
+		{% endfor %}
+	</div>
+</section>
+<footer>
+	<div class="footer-flex">
+		<div class="col">
+			<p class="col-header">Pages</p>
+			{{ menu("Header")
+	            .listClass("")
+	            .activeClass("current")
+	            .render()|raw }}
+	    </div>
+	    <div class="col">
+        	<p class="col-header">Contact</p>
+        	<ul class="contact">
+        		<li>
+        			<a
+        				href="https://maps.google.com/maps/place/{{ variable_value('contact_information', 'address').formatted }}"
+        				target="_blank"
+        				title="Find Canterbury Plumbing + Gas on Google Maps">
+		                <svg class="icon icon-compass">
+		                    <use xlink:href="#icon-compass"></use>
+		                </svg>
+		                <span>
+		                	{{ variable_value('contact_information', 'address').address|raw }}
+		                </span>
+            		</a>
+            	</li>
+            	<li>
+        			<a
+        				href="tel:{{ variable_value('contact_information', 'phone') }}"
+        				title="Contact Canterbury Plumbing + Gas by phone">
+		                <svg class="icon icon-phone">
+		                    <use xlink:href="#icon-phone"></use>
+		                </svg>
+		                <span>
+		                	{{ variable_value('contact_information', 'phone')|raw }}
+		                </span>
+            		</a>
+            	</li>
+            	<li>
+        			<a
+        				href="tel:{{ variable_value('contact_information', 'mobile') }}"
+        				title="Contact Canterbury Plumbing + Gas by phone">
+		                <svg class="icon icon-mobile">
+		                    <use xlink:href="#icon-mobile"></use>
+		                </svg>
+		                <span>
+		                	{{ variable_value('contact_information', 'mobile')|raw }}
+		                </span>
+            		</a>
+            	</li>
+            	<li>
+        			<a
+        				href="mailto:{{ variable_value('contact_information', 'email') }}"
+        				title="Contact Canterbury Plumbing + Gas by email">
+		                <svg class="icon icon-at">
+		                    <use xlink:href="#icon-at"></use>
+		                </svg>
+		                <span>
+		                	{{ variable_value('contact_information', 'email')|raw }}
+		                </span>
+            		</a>
+            	</li>
+            	<li>
+        			<a
+        				href="{{ variable_value('contact_information', 'facebook') }}"
+        				target="_blank"
+        				title="Find Canterbury Plumbing + Gas on Facebook">
+		                <svg class="icon icon-facebook2">
+		                    <use xlink:href="#icon-facebook2"></use>
+		                </svg>
+		                <span>
+		                	Facebook: Canterbury Plumbing + Gas
+		                </span>
+            		</a>
+            	</li>
+        	</ul>
+        </div>
+	</div>
+	<div class="spacer"></div>
+	<div class="footer-flex">
+		<p>
+			<a
+				href="/sitemap.xml"
+				target="_blank"
+				title="Canterbury Plumbing + Gas Sitemap">
+				Sitemap
+			</a>
+		</p>
+		<p>
+			<a
+				href="https://finnito.nz"
+				target="_blank"
+				title="Finnito Development website">
+				Developed by Finnito Development
+			</a>
+		</p>
+	</div>
+</footer>

@@ -1,0 +1,159 @@
+{% htmlcompress %}
+<!doctype html>
+
+<!--[if lt IE 7]>
+<html class="nojs ms lt_ie7" lang="en"><![endif]-->
+<!--[if IE 7]>
+<html class="nojs ms ie7" lang="en"><![endif]-->
+<!--[if IE 8]>
+<html class="nojs ms ie8" lang="en"><![endif]-->
+<!--[if gt IE 8]>
+<html class="nojs ms" lang="en"><![endif]-->
+
+<html>
+
+<head>
+    {% include "theme::partials/metadata" %}
+</head>
+
+<body>
+
+{% include "theme::partials/header" %}
+
+<main id="main">
+
+    {# Slideshow time! #}
+    {% if page.slug == "home" %}
+    <div class="slides">
+        {% for slide in entries("canterburyplumbinggas", "slideshow")
+            .cache(1209600)
+            .get()
+            %}
+            <img
+              class="lazy"
+              data-src="{{ slide.slide.url }}"
+              alt="{{slide.slide.title}}"
+              data-height="{{slide.slide.height}}"
+              data-width="{{slide.slide.width}}"/>
+        {% endfor %}
+        <noscript>
+        {% for slide in entries("canterburyplumbinggas", "slideshow")
+            .cache(1209600)
+            .get()
+            %}
+              <img src="{{ slide.slide.url }}"
+              alt="{{slide.slide.title}}"/>
+        {% endfor %}
+        </noscript>
+    </div>
+    {% endif %}
+
+    <div class="container">
+
+        <div class="layout-flex">
+        	<div class="sidebar">
+	        	<div class="quote">
+	        		<h2>Get a Quote Today</h2>
+	        		{{ form('forms::quote').setOption('prefix', 'quote_').get()|raw }}
+	        	</div>
+	        	<div class="testimonials">
+	        		<h2>Testimonials</h2>
+	        		{% for t in entries("canterburyplumbinggas", "testimonials")
+	        			.limit(2)
+	        			.inRandomOrder()
+                .cache(1209600)
+	        			.get()
+	        			%}
+	        			<div class="testimonial">
+	        				<p class="testimonial-content">{{ t.testimonial }}</p>
+	        				<p class="testimonial-author">- {{ t.author }}</p>
+	        			</div>
+	        			<div class="spacer dark"></div>
+	        		{% endfor %}
+	        	</div>
+	        </div>
+        	<div class="content">
+        		{% include "theme::partials/messages" %}
+        		{% block content %}{% endblock %}
+        		{% set p = page.slug %}
+        		{% for e in entries("canterburyplumbinggas", "services")
+        			.where("page", p)
+              .cache(1209600)
+        			.get()
+        			%}
+        			<div class="segment">
+        				<div class="text">
+        					{{ e.service|raw }}
+        				</div>
+                {% if e.service_image is not empty %}
+                <div class="segment-image-container">
+                  <img
+                    class="lazy"
+                    data-src="{{e.service_image.url}}"
+                    alt="{{e.service_image.title}}"
+                    data-height="{{e.service_image.height}}"
+                    data-width="{{e.service_image.width}}"/>
+                
+                  <noscript>
+                    <img
+                      src="{{e.service_image.url}}"
+                      alt="{{e.service_image.title}}"/>
+                  </noscript>
+                </div>
+                {% endif %}
+        			</div>
+        			<div class="spacer dark"></div>
+        		{% endfor %}
+        	</div>
+        </div>
+    </div>
+</main>
+
+{% include "theme::partials/footer" %}
+{% include "theme::partials/assets" %}
+{% include "theme::partials/svg" %}
+<script type='application/ld+json'>
+{
+  "@context": "http://www.schema.org",
+  "@type": "Plumber",
+  "name": "{{ setting_value('streams::name') }}",
+  "url": "http://www.canterburyplumbing.co.nz/",
+  "description": "{{ setting_value('streams::description') }}",
+  "image": "{{ variable_value('design', 'logo').url }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "1636 Christhurch Akaroa Road",
+    "addressLocality": "Gebbies Valley",
+    "addressRegion": "Canterbury",
+    "postalCode": "7672",
+    "addressCountry": "New Zealand"
+  },
+  "openingHours": "Mo, Tu, We, Th, Fr 08:00-17:00",
+  "telephone": "{{ variable_value('contact_information', 'phone') }}"
+  }
+</script>
+{{ asset_add("theme.js", "theme::js/theme/*") }}
+<script>
+{{ asset_inline("theme.js", ["min"]) }}
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111528036-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111528036-2');
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-87756920-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+ 
+  gtag('config', 'UA-87756920-1');
+</script>
+</body>
+</html>
+{% endhtmlcompress %}

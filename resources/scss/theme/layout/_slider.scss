@@ -1,0 +1,90 @@
+.slides {
+  height: 45vh;
+  width: 100vw;
+  position: relative;
+  overflow-y: hidden;
+  z-index: -1;
+}
+
+.slides img,
+.slides noscript img {
+  width: 100%;
+  max-width: 100%;
+
+  height: 100%;
+  max-height: 100%;
+
+  -o-object-fit: cover;
+
+     object-fit: cover;
+}
+
+.slides img:first-child,
+.slides noscript img:first-child {
+  -o-object-position: bottom;
+     object-position: bottom;
+  @media (min-width:1200px) {
+    -o-object-position: 50% 80%;
+       object-position: 50% 80%;
+  }
+}
+
+$numSlides: 3;
+$timePerSlide: 5;
+$totalTime: $numSlides * $timePerSlide;
+
+.slides img,
+.slides noscript img {
+  position:absolute;
+  -webkit-animation: round #{$totalTime}s infinite;
+          animation: round #{$totalTime}s infinite;
+  opacity:0;
+}
+@-webkit-keyframes round{
+  0%{
+    opacity: 1;
+  }
+  16%{
+    opacity: 1;
+  }
+  33% {
+    opacity: 0;
+  }
+  84% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes round{
+  0%{
+    opacity: 1;
+  }
+  16%{
+    opacity: 1;
+  }
+  33% {
+    opacity: 0;
+  }
+  84% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@for $index from 1 to ($numSlides + 1){
+  .slides img:nth-child(#{$index}){
+    -webkit-animation-delay: #{$totalTime - ($timePerSlide * $index)}s;
+            animation-delay: #{$totalTime - ($timePerSlide * $index)}s
+  }
+}
+
+@for $index from 1 to ($numSlides + 1){
+  .slides noscript img:nth-child(#{$index}){
+    -webkit-animation-delay: #{$totalTime - ($timePerSlide * $index)}s;
+            animation-delay: #{$totalTime - ($timePerSlide * $index)}s
+  }
+}
