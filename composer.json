@@ -1,5 +1,5 @@
 {
-    "name": "blackhole/canterburyplumbinggas-theme",
+    "name": "finnito/canterbury_plumbing_and_gas-theme",
     "type": "streams-addon",
     "autoload": {
         "psr-4": {
