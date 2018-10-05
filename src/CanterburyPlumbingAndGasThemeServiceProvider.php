@@ -1,9 +1,9 @@
-<?php namespace Blackhole\CanterburyplumbinggasTheme;
+<?php namespace Finnito\CanterburyPlumbingAndGasTheme;
 
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Illuminate\Routing\Router;
 
-class CanterburyplumbinggasThemeServiceProvider extends AddonServiceProvider
+class CanterburyPlumbingAndGasThemeServiceProvider extends AddonServiceProvider
 {
 
     /**
