@@ -1,9 +1,9 @@
-<?php namespace Blackhole\CanterburyplumbinggasTheme;
+<?php namespace Finnito\CanterburyPlumbingAndGasTheme;
 
 use Anomaly\Streams\Platform\Addon\AddonServiceProvider;
 use Illuminate\Routing\Router;
 
-class CanterburyplumbinggasThemeServiceProvider extends AddonServiceProvider
+class CanterburyPlumbingAndGasThemeServiceProvider extends AddonServiceProvider
 {
 
     /**
@@ -47,7 +47,7 @@ class CanterburyplumbinggasThemeServiceProvider extends AddonServiceProvider
      * @type array|null
      */
     protected $middleware = [
-        //Blackhole\CanterburyplumbinggasTheme\Http\Middleware\ExampleMiddleware::class
+        //Finnito\CanterburyPlumbingAndGasTheme\Http\Middleware\ExampleMiddleware::class
     ];
 
     /**
@@ -57,7 +57,7 @@ class CanterburyplumbinggasThemeServiceProvider extends AddonServiceProvider
      */
     protected $groupMiddleware = [
         //'web' => [
-        //    Blackhole\CanterburyplumbinggasTheme\Http\Middleware\ExampleMiddleware::class,
+        //    Finnito\CanterburyPlumbingAndGasTheme\Http\Middleware\ExampleMiddleware::class,
         //],
     ];
 
@@ -74,8 +74,8 @@ class CanterburyplumbinggasThemeServiceProvider extends AddonServiceProvider
      * @type array|null
      */
     protected $listeners = [
-        //Blackhole\CanterburyplumbinggasTheme\Event\ExampleEvent::class => [
-        //    Blackhole\CanterburyplumbinggasTheme\Listener\ExampleListener::class,
+        //Finnito\CanterburyPlumbingAndGasTheme\Event\ExampleEvent::class => [
+        //    Finnito\CanterburyPlumbingAndGasTheme\Listener\ExampleListener::class,
         //],
     ];
 
@@ -85,7 +85,7 @@ class CanterburyplumbinggasThemeServiceProvider extends AddonServiceProvider
      * @type array|null
      */
     protected $aliases = [
-        //'Example' => Blackhole\CanterburyplumbinggasTheme\Example::class
+        //'Example' => Finnito\CanterburyPlumbingAndGasTheme\Example::class
     ];
 
     /**
